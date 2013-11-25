@@ -9,5 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @interface CalculatorViewController : UIViewController
+@property (strong, nonatomic) IBOutlet UILabel *outputLabel;
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *buttonCollection;
+
+- (IBAction)acButton:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *zeroButton;
+@property (weak, nonatomic) IBOutlet UIButton *oneButton;
+
+
 
 @end

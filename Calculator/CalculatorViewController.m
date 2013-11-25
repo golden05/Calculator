@@ -10,6 +10,7 @@
 
 @interface CalculatorViewController ()
 
+
 @end
 
 @implementation CalculatorViewController
@@ -33,6 +34,27 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)acButton:(id)sender {
+}
+
+- (IBAction)zeroButton:(id)sender {
+    if ([self.outputLabel.text  isEqual: @"0"]) {
+        self.outputLabel.text = @"0";
+    } else {
+        NSString *newText = [self.outputLabel.text stringByAppendingString:@"0"];
+        self.outputLabel.text = newText;
+    }
+}
+
+- (IBAction)oneButton:(id)sender {
+    if ([self.outputLabel.text  isEqual: @"0"]) {
+        self.outputLabel.text = @"1";
+    } else {
+        NSString *newText = [self.outputLabel.text stringByAppendingString:@"1"];
+        self.outputLabel.text = newText;
+    }
 }
 
 @end
