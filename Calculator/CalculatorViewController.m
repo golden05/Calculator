@@ -43,8 +43,7 @@
     if ([self.outputLabel.text  isEqual: @"0"]) {
         self.outputLabel.text = @"0";
     } else {
-        NSString *newText = [self.outputLabel.text stringByAppendingString:@"0"];
-        self.outputLabel.text = newText;
+        self.outputLabel.text = [self.outputLabel.text stringByAppendingString:@"0"];
     }
 }
 
@@ -52,8 +51,7 @@
     if ([self.outputLabel.text  isEqual: @"0"]) {
         self.outputLabel.text = @"1";
     } else {
-        NSString *newText = [self.outputLabel.text stringByAppendingString:@"1"];
-        self.outputLabel.text = newText;
+        self.outputLabel.text = [self.outputLabel.text stringByAppendingString:@"1"];
     }
 }
 
