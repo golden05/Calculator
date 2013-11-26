@@ -38,7 +38,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="acButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="jLb-9k-Xn2"/>
+                                    <action selector="acButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="H90-BG-mAJ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cG5-rI-Hvc">
@@ -171,6 +171,7 @@
                     </view>
                     <connections>
                         <outlet property="OutputLabel" destination="BEh-WV-36t" id="kHM-Zm-GyY"/>
+                        <outlet property="acButton" destination="3dO-T4-bjm" id="Lgd-ul-BOX"/>
                         <outlet property="oneButton" destination="LTg-Gt-ypV" id="7SI-Oy-2OA"/>
                         <outlet property="outputLabel" destination="BEh-WV-36t" id="NcH-zk-lM7"/>
                         <outlet property="zeroButton" destination="pLF-Wc-S9w" id="dU2-Ny-JD0"/>

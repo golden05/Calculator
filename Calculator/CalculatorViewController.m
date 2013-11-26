@@ -37,22 +37,25 @@
 }
 
 - (IBAction)acButton:(id)sender {
+    self.outputLabel.text = @"0";
 }
 
 - (IBAction)zeroButton:(id)sender {
+    [self press:sender];
+}
+
+- (void)press:(UIButton*)sender {
     if ([self.outputLabel.text  isEqual: @"0"]) {
-        self.outputLabel.text = @"0";
+        self.outputLabel.text = sender.titleLabel.text;
     } else {
-        self.outputLabel.text = [self.outputLabel.text stringByAppendingString:@"0"];
+        self.outputLabel.text = [self.outputLabel.text stringByAppendingString:sender.titleLabel.text];
     }
 }
 
 - (IBAction)oneButton:(id)sender {
-    if ([self.outputLabel.text  isEqual: @"0"]) {
-        self.outputLabel.text = @"1";
-    } else {
-        self.outputLabel.text = [self.outputLabel.text stringByAppendingString:@"1"];
-    }
+    [self press:sender];
 }
+
+
 
 @end

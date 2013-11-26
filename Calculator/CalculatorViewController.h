@@ -13,6 +13,7 @@
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *buttonCollection;
 
 - (IBAction)acButton:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *acButton;
 @property (weak, nonatomic) IBOutlet UIButton *zeroButton;
 @property (weak, nonatomic) IBOutlet UIButton *oneButton;
 

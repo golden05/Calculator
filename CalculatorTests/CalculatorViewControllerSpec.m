@@ -36,7 +36,6 @@ describe(@"CalculatorViewController", ^{
     });
     
     it(@"should have Output outlet to output 0", ^{
-        NSLog(@"%@",sut.outputLabel.text);
         [[theValue(sut.outputLabel.text.intValue) should] beZero];
     });
 
@@ -48,11 +47,19 @@ describe(@"CalculatorViewController", ^{
     it(@"should have oneButton to represent the operator ", ^{
         [sut.oneButton shouldNotBeNil];
     });
+    
+    it(@"should have acButton to represent the operator ", ^{
+        [sut.acButton shouldNotBeNil];
+    });
 
     context(@"outputLabel is zero", ^{
-		it(@"should be zero when press zeroButton", ^{
+        beforeEach(^{
             //given
             sut.outputLabel.text = @"0";
+        });
+        
+		it(@"should be zero when press zeroButton", ^{
+            //given
             //when
             [[sut zeroButton] sendActionsForControlEvents:UIControlEventTouchUpInside];
             //then
@@ -60,17 +67,27 @@ describe(@"CalculatorViewController", ^{
 		});
         it(@"should be one when press oneButton", ^{
             //given
-            sut.outputLabel.text = @"0";
             //when
             [[sut oneButton] sendActionsForControlEvents:UIControlEventTouchUpInside];
             //then
             [[theValue(sut.outputLabel.text.intValue) should] equal:theValue(1)];
 		});
+        it(@"should be zero when press oneButton", ^{
+            //given
+            //when
+            [[sut acButton] sendActionsForControlEvents:UIControlEventTouchUpInside];
+            //then
+            [[theValue(sut.outputLabel.text.intValue) should] equal:theValue(0)];
+		});
 	});
     context(@"outputLabel is one", ^{
-		it(@"should be ten when press zeroButton", ^{
+        beforeEach(^{
             //given
             sut.outputLabel.text = @"1";
+        });
+
+		it(@"should be ten when press zeroButton", ^{
+            //given
             //when
             [[sut zeroButton] sendActionsForControlEvents:UIControlEventTouchUpInside];
             //then
@@ -78,11 +95,17 @@ describe(@"CalculatorViewController", ^{
 		});
         it(@"should be eleven when press oneButton", ^{
             //given
-            sut.outputLabel.text = @"1";
             //when
             [[sut oneButton] sendActionsForControlEvents:UIControlEventTouchUpInside];
             //then
             [[theValue(sut.outputLabel.text.intValue) should] equal:theValue(11)];
+		});
+        it(@"should be zero when press acButton", ^{
+            //given
+            //when
+            [[sut acButton] sendActionsForControlEvents:UIControlEventTouchUpInside];
+            //then
+            [[theValue(sut.outputLabel.text.intValue) should] equal:theValue(0)];
 		});
 	});
     
