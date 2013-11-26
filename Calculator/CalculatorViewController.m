@@ -55,6 +55,30 @@
 - (IBAction)oneButton:(id)sender {
     [self press:sender];
 }
+- (IBAction)twoButton:(id)sender {
+    [self press:sender];
+}
+- (IBAction)threeButton:(id)sender {
+    [self press:sender];
+}
+- (IBAction)fourButton:(id)sender {
+    [self press:sender];
+}
+- (IBAction)fiveButton:(id)sender {
+    [self press:sender];
+}
+- (IBAction)sixButton:(id)sender {
+    [self press:sender];
+}
+- (IBAction)sevenButton:(id)sender {
+    [self press:sender];
+}
+- (IBAction)eightButton:(id)sender {
+    [self press:sender];
+}
+- (IBAction)nineButton:(id)sender {
+    [self press:sender];
+}
 
 
 
