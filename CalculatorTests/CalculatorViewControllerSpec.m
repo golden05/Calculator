@@ -83,6 +83,14 @@ describe(@"CalculatorViewController", ^{
     it(@"should have acButton to represent the operator ", ^{
         [sut.acButton shouldNotBeNil];
     });
+    
+    it(@"should have plusButton to represent the operator ", ^{
+        [sut.plusButton shouldNotBeNil];
+    });
+    
+    it(@"should have equalButton to represent the operator ", ^{
+        [sut.equalButton shouldNotBeNil];
+    });
 
     context(@"outputLabel is zero", ^{
         beforeEach(^{
@@ -166,6 +174,8 @@ describe(@"CalculatorViewController", ^{
             //then
             [[theValue(sut.outputLabel.text.intValue) should] equal:theValue(9)];
 		});
+        
+
 
 	});
     
@@ -253,6 +263,18 @@ describe(@"CalculatorViewController", ^{
 		});
 
 	});
+    
+    it(@"should be two when one plus one ", ^{
+        //given
+        sut.outputLabel.text = @"0";
+        //when
+        [[sut oneButton] sendActionsForControlEvents:UIControlEventTouchUpInside];
+        [[sut plusButton] sendActionsForControlEvents:UIControlEventTouchUpInside];
+        [[sut oneButton] sendActionsForControlEvents:UIControlEventTouchUpInside];
+        [[sut equalButton] sendActionsForControlEvents:UIControlEventTouchUpInside];
+        //then
+        [[theValue(sut.outputLabel.text.intValue) should] equal:theValue(2)];
+    });
     
 });
 

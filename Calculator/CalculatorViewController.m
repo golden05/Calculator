@@ -9,7 +9,9 @@
 #import "CalculatorViewController.h"
 
 @interface CalculatorViewController ()
-
+@property BOOL computeFlag ;
+@property int compute;
+@property NSString* operation;
 
 @end
 
@@ -38,6 +40,9 @@
 
 - (IBAction)acButton:(id)sender {
     self.outputLabel.text = @"0";
+    self.computeFlag = NO;
+    self.compute = 0;
+    self.operation = Nil;
 }
 
 - (IBAction)zeroButton:(id)sender {
@@ -45,12 +50,16 @@
 }
 
 - (void)press:(UIButton*)sender {
-    if ([self.outputLabel.text  isEqual: @"0"]) {
+//    self.compute = self.outputLabel.text.intValue ;
+    // [self.outputLabel.text  isEqual: @"0"]
+    if ((self.computeFlag) || ([self.outputLabel.text  isEqual: @"0"])){
+        self.computeFlag = NO;
         self.outputLabel.text = sender.titleLabel.text;
     } else {
         self.outputLabel.text = [self.outputLabel.text stringByAppendingString:sender.titleLabel.text];
     }
-}
+
+    }
 
 - (IBAction)oneButton:(id)sender {
     [self press:sender];
@@ -78,6 +87,30 @@
 }
 - (IBAction)nineButton:(id)sender {
     [self press:sender];
+}
+- (IBAction)plusButton:(id)sender {
+    self.operation = @"+";
+    if (self.computeFlag == YES) {
+        self.compute = self.outputLabel.text.intValue;
+    } else {
+        self.computeFlag = YES;
+        int dd = self.outputLabel.text.intValue;
+        self.outputLabel.text = [NSString stringWithFormat:@"%d",(self.compute + dd )];
+        self.compute = self.outputLabel.text.intValue;
+        
+    }
+}
+- (IBAction)equalButton:(id)sender {
+    if (self.computeFlag == YES) {
+        self.outputLabel.text = [NSString stringWithFormat:@"%d",(self.compute + self.outputLabel.text.intValue)];
+    } else {
+        int dd = self.outputLabel.text.intValue;
+        if ([self.operation  isEqual: @"+"]) {
+            self.outputLabel.text = [NSString stringWithFormat:@"%d",(self.compute + self.outputLabel.text.intValue)];
+            self.compute = dd ;
+        }
+        self.computeFlag = YES;
+    }
 }
 
 
