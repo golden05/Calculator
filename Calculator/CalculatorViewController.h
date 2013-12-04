@@ -25,6 +25,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *eightButton;
 @property (weak, nonatomic) IBOutlet UIButton *nineButton;
 @property (weak, nonatomic) IBOutlet UIButton *plusButton;
+@property (weak, nonatomic) IBOutlet UIButton *subtractionButton;
+
 @property (weak, nonatomic) IBOutlet UIButton *equalButton;
 
 

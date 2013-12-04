@@ -88,6 +88,10 @@ describe(@"CalculatorViewController", ^{
         [sut.plusButton shouldNotBeNil];
     });
     
+    it(@"should have subtractionButton to represent the operator ", ^{
+        [sut.subtractionButton shouldNotBeNil];
+    });
+    
     it(@"should have equalButton to represent the operator ", ^{
         [sut.equalButton shouldNotBeNil];
     });
@@ -274,6 +278,18 @@ describe(@"CalculatorViewController", ^{
         [[sut equalButton] sendActionsForControlEvents:UIControlEventTouchUpInside];
         //then
         [[theValue(sut.outputLabel.text.intValue) should] equal:theValue(2)];
+    });
+    
+    it(@"should be zero when one subtraction one ", ^{
+        //given
+        sut.outputLabel.text = @"0";
+        //when
+        [[sut oneButton] sendActionsForControlEvents:UIControlEventTouchUpInside];
+        [[sut subtractionButton] sendActionsForControlEvents:UIControlEventTouchUpInside];
+        [[sut oneButton] sendActionsForControlEvents:UIControlEventTouchUpInside];
+        [[sut equalButton] sendActionsForControlEvents:UIControlEventTouchUpInside];
+        //then
+        [[theValue(sut.outputLabel.text.intValue) should] equal:theValue(0)];
     });
     
 });

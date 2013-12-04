@@ -10,7 +10,9 @@
 
 @interface CalculatorViewController ()
 @property BOOL computeFlag ;
-@property int compute;
+@property BOOL secondFlag ;
+@property int firstElement;
+@property int secondElement;
 @property NSString* operation;
 
 @end
@@ -41,7 +43,9 @@
 - (IBAction)acButton:(id)sender {
     self.outputLabel.text = @"0";
     self.computeFlag = NO;
-    self.compute = 0;
+    self.firstElement = 0;
+    self.secondElement = 0;
+    self.secondFlag = NO;
     self.operation = Nil;
 }
 
@@ -50,16 +54,19 @@
 }
 
 - (void)press:(UIButton*)sender {
-//    self.compute = self.outputLabel.text.intValue ;
-    // [self.outputLabel.text  isEqual: @"0"]
+    
     if ((self.computeFlag) || ([self.outputLabel.text  isEqual: @"0"])){
         self.computeFlag = NO;
         self.outputLabel.text = sender.titleLabel.text;
     } else {
         self.outputLabel.text = [self.outputLabel.text stringByAppendingString:sender.titleLabel.text];
     }
-
+    if (self.secondFlag == YES) {
+        self.secondElement = self.outputLabel.text.intValue;
+    }else {
+        self.firstElement = self.outputLabel.text.intValue;
     }
+}
 
 - (IBAction)oneButton:(id)sender {
     [self press:sender];
@@ -89,25 +96,39 @@
     [self press:sender];
 }
 - (IBAction)plusButton:(id)sender {
+    self.secondFlag = YES;
     self.operation = @"+";
-    if (self.computeFlag == YES) {
-        self.compute = self.outputLabel.text.intValue;
-    } else {
-        self.computeFlag = YES;
-        int dd = self.outputLabel.text.intValue;
-        self.outputLabel.text = [NSString stringWithFormat:@"%d",(self.compute + dd )];
-        self.compute = self.outputLabel.text.intValue;
-        
-    }
+    self.firstElement = self.firstElement + self.secondElement;
+    self.outputLabel.text = [NSString stringWithFormat:@"%d",self.firstElement];
+    self.secondElement = 0;
+    self.computeFlag = YES;
 }
+- (IBAction)subtractionButton:(id)sender {
+    self.secondFlag = YES;
+    self.operation = @"-";
+    self.computeFlag = YES;
+    self.firstElement = self.firstElement - self.secondElement;
+    self.outputLabel.text = [NSString stringWithFormat:@"%d",self.firstElement];
+    self.secondElement = 0;
+    self.computeFlag = YES;
+    
+//    self.outputLabel.text = [NSString stringWithFormat:@"%d",(self.compute - firstElement)];
+//    self.compute = self.outputLabel.text.intValue;
+}
+
 - (IBAction)equalButton:(id)sender {
+    self.secondFlag = YES;
     if (self.computeFlag == YES) {
-        self.outputLabel.text = [NSString stringWithFormat:@"%d",(self.compute + self.outputLabel.text.intValue)];
     } else {
-        int dd = self.outputLabel.text.intValue;
         if ([self.operation  isEqual: @"+"]) {
-            self.outputLabel.text = [NSString stringWithFormat:@"%d",(self.compute + self.outputLabel.text.intValue)];
-            self.compute = dd ;
+            self.firstElement = self.firstElement + self.secondElement;
+            self.outputLabel.text = [NSString stringWithFormat:@"%d",self.firstElement];
+            self.secondElement = 0;
+        }
+        else if ([self.operation  isEqual: @"-"]){
+            self.firstElement = self.firstElement - self.secondElement;
+            self.outputLabel.text = [NSString stringWithFormat:@"%d",self.firstElement];
+            self.secondElement = 0;
         }
         self.computeFlag = YES;
     }
